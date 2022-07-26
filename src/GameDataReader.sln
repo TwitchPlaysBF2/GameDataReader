@@ -1,0 +1,22 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GameDataReader", "GameDataReader\GameDataReader.csproj", "{8C5A21F4-5F1F-469E-88EA-639B4BC3C943}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GameDataReader.Tests", "GameDataReader.Tests\GameDataReader.Tests.csproj", "{EC7E5159-7BF5-4AD6-96D1-14337738305B}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{8C5A21F4-5F1F-469E-88EA-639B4BC3C943}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8C5A21F4-5F1F-469E-88EA-639B4BC3C943}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8C5A21F4-5F1F-469E-88EA-639B4BC3C943}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8C5A21F4-5F1F-469E-88EA-639B4BC3C943}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EC7E5159-7BF5-4AD6-96D1-14337738305B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EC7E5159-7BF5-4AD6-96D1-14337738305B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EC7E5159-7BF5-4AD6-96D1-14337738305B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EC7E5159-7BF5-4AD6-96D1-14337738305B}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
