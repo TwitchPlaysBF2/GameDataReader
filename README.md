@@ -16,6 +16,6 @@ Open to integration of more games & data.
 
 ## Battlefield 2
 
-- `GameDataReaders.Bf2.ReadActivePlayer()` returns:
+- `GameDataReaders.Bf2.ReadActivePlayer()`
     - `Bf2Player.OnlineName` - from `{userDocuments}\Battlefield 2\Profiles\{profileNumber}\Profile.con`
     - `Bf2Player.ClanTag` - from `{userDocuments}\Battlefield 2\Profiles\Global.con`
