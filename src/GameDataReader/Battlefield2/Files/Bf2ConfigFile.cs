@@ -22,7 +22,9 @@ internal abstract class Bf2ConfigFile<T>
     {
         var filePath = GetFilePath();
         if (!File.Exists(filePath))
-            throw new FileNotFoundException($"Couldn't find {typeof(T).FullName} at location: {filePath}");
+            throw new FileNotFoundException(
+                "Couldn't find BF2 configuration data. Is Battlefield 2 installed?\r\n" +
+                $"{typeof(T).FullName} not found at location: {filePath}");
 
         var configLines = File.ReadAllLines(filePath);
         var resolver = new SettingResolver(configLines);
