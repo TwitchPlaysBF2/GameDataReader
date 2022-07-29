@@ -9,7 +9,7 @@ Open to integration of more games & data.
 
 - Add the `GameDataReader` NuGet package to your project: `Install-Package GameDataReader`
 - Add import statement: `using GameDataReader;`
-- For (optional) dependency injection, register your preferred DataReader to your `IServiceCollection` by configuring: `services.AddBf2DataReader();`
+- For (optional) dependency injection, register your preferred DataReader to your `IServiceCollection` by configuring i.e. `services.AddBf2DataReader();` and you're ready to inject i.e. `IBf2DataReader` instances.
 - For (straight forward) static access to GameData, simply invoke a supported method like: `GameDataReaders.Bf2.ReadActivePlayer()`
 
 # Currently supported games
