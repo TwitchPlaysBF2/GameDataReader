@@ -5,7 +5,6 @@ namespace GameDataReader.BattlefieldRefractorV1Common.Files;
 internal class GlobalRefractorV1ConfigFile : ConfigFile<GlobalRefractorV1ConfigFile>
 {
     private readonly string _gameName, _modName;
-    
 
     public GlobalRefractorV1ConfigFile(string gameName, string modName)
     {
