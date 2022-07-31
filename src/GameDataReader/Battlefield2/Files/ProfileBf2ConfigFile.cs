@@ -1,4 +1,6 @@
-﻿namespace GameDataReader.Battlefield2.Files;
+﻿using GameDataReader.BattlefieldRefractorCommon.Files;
+
+namespace GameDataReader.Battlefield2.Files;
 
 internal class ProfileBf2ConfigFile : Bf2ConfigFile<ProfileBf2ConfigFile>
 {

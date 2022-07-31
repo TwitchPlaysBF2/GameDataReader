@@ -1,8 +1,8 @@
 ﻿using FluentAssertions;
-using GameDataReader.Battlefield2.Parsing;
+using GameDataReader.BattlefieldRefractorCommon.Parsing;
 using NUnit.Framework;
 
-namespace GameDataReader.Tests.Battlefield2.Parsing;
+namespace GameDataReader.Tests.BattlefieldRefractorCommon.Parsing;
 
 public class SettingTests
 {

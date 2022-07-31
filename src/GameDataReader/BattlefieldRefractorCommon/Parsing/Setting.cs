@@ -1,4 +1,4 @@
-﻿namespace GameDataReader.Battlefield2.Parsing;
+﻿namespace GameDataReader.BattlefieldRefractorCommon.Parsing;
 
 /// <summary>
 /// Represents a line inside of a .con configuration file.

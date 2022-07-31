@@ -1,4 +1,4 @@
-﻿namespace GameDataReader.Battlefield2.Parsing;
+﻿namespace GameDataReader.BattlefieldRefractorCommon.Parsing;
 
 /// <summary>
 /// Loops through configuration file lines until it finds the right one.
@@ -13,7 +13,7 @@ internal class SettingResolver
     }
 
     /// <summary>
-    /// Looks up the desired setting in a BF2 .con configuration file.
+    /// Looks up the desired setting in a Refractor engine .con configuration file.
     /// </summary>
     public Setting GetSetting(string settingKey)
     {

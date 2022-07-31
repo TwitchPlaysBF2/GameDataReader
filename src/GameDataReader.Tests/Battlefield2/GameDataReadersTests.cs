@@ -3,7 +3,7 @@ using FluentAssertions;
 using GameDataReader.Battlefield2.Reader;
 using NUnit.Framework;
 
-namespace GameDataReader.Tests;
+namespace GameDataReader.Tests.Battlefield2;
 
 public class GameDataReadersTests
 {
