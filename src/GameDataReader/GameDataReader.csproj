@@ -26,6 +26,10 @@
         </AssemblyAttribute>
     </ItemGroup>
 
+    <ItemGroup>
+      <Folder Include="BattlefieldRefractorV2Common" />
+    </ItemGroup>
+
     <PropertyGroup>
         <PackageLicenseExpression>MIT</PackageLicenseExpression>
     </PropertyGroup>
