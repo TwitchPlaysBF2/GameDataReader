@@ -2,7 +2,7 @@
 
 namespace GameDataReader.BattlefieldRefractorV1Common.Files;
 
-public class ProfileRefractorV1ConfigFile : Bf2ConfigFile<ProfileRefractorV1ConfigFile>
+public class ProfileRefractorV1ConfigFile : ConfigFile<ProfileRefractorV1ConfigFile>
 {
     private readonly string _gameName, _modName, _profileName;
 

@@ -3,10 +3,10 @@
 namespace GameDataReader.BattlefieldRefractorCommon.Files;
 
 /// <summary>
-/// Represents a BF2 .con configuration file.
+/// Represents a Refractor engine .con configuration file.
 /// </summary>
 /// <typeparam name="T">The type of the config file.</typeparam>
-public abstract class Bf2ConfigFile<T>
+public abstract class ConfigFile<T>
 {
     protected abstract string GetFilePath();
 
@@ -23,7 +23,7 @@ public abstract class Bf2ConfigFile<T>
         var filePath = GetFilePath();
         if (!File.Exists(filePath))
             throw new FileNotFoundException(
-                "Couldn't find configuration data. Is game installed?\r\n" +
+                "Couldn't find configuration data. Is the game installed?\r\n" +
                 $"{typeof(T).FullName} not found at location: {filePath}");
 
         var configLines = File.ReadAllLines(filePath);

@@ -2,7 +2,7 @@
 
 namespace GameDataReader.BattlefieldRefractorV2Common.Files;
 
-internal class GlobalRefractorV2ConfigFile : Bf2ConfigFile<GlobalRefractorV2ConfigFile>
+internal class GlobalRefractorV2ConfigFile : ConfigFile<GlobalRefractorV2ConfigFile>
 {
     private readonly string _gameName;
 
