@@ -1,11 +1,20 @@
-﻿namespace GameDataReader.Battlefield2.Files;
+﻿using GameDataReader.BattlefieldRefractorCommon.Files;
 
-internal class GlobalBf2ConfigFile : Bf2ConfigFile<GlobalBf2ConfigFile>
+namespace GameDataReader.BattlefieldRefractorV2Common.Files;
+
+internal class GlobalRefractorV2ConfigFile : ConfigFile<GlobalRefractorV2ConfigFile>
 {
+    private readonly string _gameName;
+
+    public GlobalRefractorV2ConfigFile(string gameName)
+    {
+        _gameName = gameName;
+    }
+    
     protected override string GetFilePath()
     {
         var userDocuments = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
-        return $@"{userDocuments}\Battlefield 2\Profiles\Global.con";
+        return $@"{userDocuments}\{_gameName}\Profiles\Global.con";
     }
 
     /// <summary>

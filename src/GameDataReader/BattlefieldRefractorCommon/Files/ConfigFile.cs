@@ -1,12 +1,12 @@
-﻿using GameDataReader.Battlefield2.Parsing;
+﻿using GameDataReader.BattlefieldRefractorCommon.Parsing;
 
-namespace GameDataReader.Battlefield2.Files;
+namespace GameDataReader.BattlefieldRefractorCommon.Files;
 
 /// <summary>
-/// Represents a BF2 .con configuration file.
+/// Represents a Refractor engine .con configuration file.
 /// </summary>
 /// <typeparam name="T">The type of the config file.</typeparam>
-internal abstract class Bf2ConfigFile<T>
+public abstract class ConfigFile<T>
 {
     protected abstract string GetFilePath();
 
@@ -23,7 +23,7 @@ internal abstract class Bf2ConfigFile<T>
         var filePath = GetFilePath();
         if (!File.Exists(filePath))
             throw new FileNotFoundException(
-                "Couldn't find BF2 configuration data. Is Battlefield 2 installed?\r\n" +
+                "Couldn't find configuration data. Is the game installed?\r\n" +
                 $"{typeof(T).FullName} not found at location: {filePath}");
 
         var configLines = File.ReadAllLines(filePath);

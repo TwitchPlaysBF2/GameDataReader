@@ -1,5 +1,5 @@
 # GameDataReader
-An open-source NuGet library providing simple access to game settings. 
+An open-source NuGet library providing simple access to game settings.
 
 Reading data from games like Battlefield 2 - i.e. to access player data from BF2 specific .con configuration files.
 
@@ -14,8 +14,24 @@ Open to integration of more games & data.
 
 # Currently supported games
 
+## Battlefield 1942
+
+- `GameDataReaders.Bf1942.ReadActivePlayer()`
+    - `Bf1942Player.OnlineName` - from `{localAppData}\VirtualStore\Program Files (x86)\EA GAMES\Battlefield 1942\Mods\bf1942\Settings\Profiles\{profileName}\GeneralOptions.con`
+
+## Battlefield Vietnam
+
+- `GameDataReaders.BfVietnam.ReadActivePlayer()`
+  - `BfVietnamPlayer.OnlineName` - from `{localAppData}\VirtualStore\Program Files (x86)\EA GAMES\Battlefield Vietnam\Mods\BfVietnam\settings\Profiles\{profileName}\GeneralOptions.con`
+
 ## Battlefield 2
 
 - `GameDataReaders.Bf2.ReadActivePlayer()`
     - `Bf2Player.OnlineName` - from `{userDocuments}\Battlefield 2\Profiles\{profileNumber}\Profile.con`
     - `Bf2Player.ClanTag` - from `{userDocuments}\Battlefield 2\Profiles\Global.con`
+
+## Battlefield 2142
+
+- `GameDataReaders.Bf2142.ReadActivePlayer()`
+  - `Bf2142Player.OnlineName` - from `{userDocuments}\Battlefield 2142\Profiles\{profileNumber}\Profile.con`
+  - `Bf2142Player.ClanTag` - from `{userDocuments}\Battlefield 2142\Profiles\Global.con`
