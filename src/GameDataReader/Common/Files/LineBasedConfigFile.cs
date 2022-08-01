@@ -1,20 +1,14 @@
-﻿using GameDataReader.BattlefieldRefractorCommon.Parsing;
-using GameDataReader.Common.Files;
+﻿using GameDataReader.Common.Parsing;
 
-namespace GameDataReader.BattlefieldRefractorCommon.Files;
+namespace GameDataReader.Common.Files;
 
 /// <summary>
-/// Represents a Refractor engine .con configuration file.
+/// Represents a line based configuration file (one key-value pair per line).
 /// </summary>
 /// <typeparam name="T">The type of the config file.</typeparam>
-internal abstract class ConfigFile<T> : ConfigFile
+internal abstract class LineBasedConfigFile<T> : ConfigFile
 {
-    protected readonly string GameName;
-
-    protected ConfigFile(string gameName)
-    {
-        GameName = gameName;
-    }
+    protected abstract string GetParsePattern();
 
     protected override string GetSettingValue(string settingKey)
     {
@@ -24,7 +18,7 @@ internal abstract class ConfigFile<T> : ConfigFile
         return value;
     }
 
-    protected override Common.Parsing.SettingResolver ReadConfigFile()
+    protected override SettingResolver ReadConfigFile()
     {
         var filePath = GetFilePath();
         if (!File.Exists(filePath))
@@ -33,7 +27,7 @@ internal abstract class ConfigFile<T> : ConfigFile
                 $"{typeof(T).FullName} not found at location: {filePath}");
 
         var configLines = File.ReadAllLines(filePath);
-        var resolver = new SettingResolver(configLines);
+        var resolver = new LineBasedSettingResolver(configLines, GetParsePattern());
         return resolver;
     }
 }

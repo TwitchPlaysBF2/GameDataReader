@@ -3,7 +3,7 @@
 /// <summary>
 /// Represents a line inside of a .con configuration file.
 /// </summary>
-internal class Setting
+internal class Setting : Common.Parsing.Setting
 {
     private readonly string _configLine;
     private readonly string _settingKey;
@@ -25,7 +25,7 @@ internal class Setting
     /// A config line might look like: LocalProfile.setGamespyNick "TwitchPlaysBF2"
     /// </summary>
     /// <returns></returns>
-    public string ParseValue()
+    public override string ParseValue()
     {
         if (!_configLine.Contains(_settingKey))
             throw new GameDataReaderException(

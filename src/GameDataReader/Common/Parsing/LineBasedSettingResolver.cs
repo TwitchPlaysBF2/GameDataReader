@@ -1,28 +1,32 @@
-﻿namespace GameDataReader.BattlefieldRefractorCommon.Parsing;
+﻿using GameDataReader.BattlefieldRefractorCommon.Parsing;
+
+namespace GameDataReader.Common.Parsing;
 
 /// <summary>
 /// Loops through configuration file lines until it finds the right one.
 /// </summary>
-internal class SettingResolver : Common.Parsing.SettingResolver
+internal class LineBasedSettingResolver : SettingResolver
 {
     private readonly IEnumerable<string> _configLines;
+    private readonly string _parsePattern;
 
-    public SettingResolver(IEnumerable<string> configLines)
+    public LineBasedSettingResolver(IEnumerable<string> configLines, string parsePattern)
     {
         _configLines = configLines;
+        _parsePattern = parsePattern;
     }
 
     /// <summary>
-    /// Looks up the desired setting in a Refractor engine .con configuration file.
+    /// Looks up the desired setting in a line-based configuration file.
     /// </summary>
-    public override Common.Parsing.Setting GetSetting(string settingKey)
+    public override Setting GetSetting(string settingKey)
     {
         foreach (var configLine in _configLines)
         {
             if (!configLine.Contains(settingKey))
                 continue;
 
-            return new Setting(configLine, settingKey);
+            return new LineBasedSetting(configLine, settingKey, _parsePattern);
         }
 
         throw new GameDataReaderException(message:
