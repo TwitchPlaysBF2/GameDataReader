@@ -4,7 +4,8 @@ namespace GameDataReader.BattlefieldRefractorV2Common.Files;
 
 internal class ProfileRefractorV2ConfigFile : ConfigFile<ProfileRefractorV2ConfigFile>
 {
-    private readonly string _profileNumber, _nameSettingKey;
+    private readonly string _profileNumber;
+    private readonly string _nameSettingKey;
 
     public ProfileRefractorV2ConfigFile(string gameName, string profileNumber, string nameSettingKey)
         : base(gameName)

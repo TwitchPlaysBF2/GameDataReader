@@ -7,7 +7,8 @@ namespace GameDataReader.Battlefield2.Reader;
 /// </summary>
 public class Bf2DataReader : IBf2DataReader
 {
-    private const string GameName = "Battlefield 2", NameSettingKey = "LocalProfile.setGamespyNick";
+    private const string GameName = "Battlefield 2";
+    private const string NameSettingKey = "LocalProfile.setGamespyNick";
     private readonly GlobalRefractorV2ConfigFile _globalConfig;
     private ProfileRefractorV2ConfigFile? _profileConfig;
 

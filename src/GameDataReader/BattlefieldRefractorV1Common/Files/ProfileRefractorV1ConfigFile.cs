@@ -4,7 +4,8 @@ namespace GameDataReader.BattlefieldRefractorV1Common.Files;
 
 public class ProfileRefractorV1ConfigFile : ConfigFile<ProfileRefractorV1ConfigFile>
 {
-    private readonly string _modName, _profileName;
+    private readonly string _modName;
+    private readonly string _profileName;
 
     public ProfileRefractorV1ConfigFile(string gameName, string modName, string profileName)
         : base(gameName)

@@ -7,7 +7,8 @@ namespace GameDataReader.Battlefield2142.Reader;
 /// </summary>
 public class Bf2142DataReader : IBf2142DataReader
 {
-    private const string GameName = "Battlefield 2142", NameSettingKey = "LocalProfile.setEAOnlineSubAccount";
+    private const string GameName = "Battlefield 2142";
+    private const string NameSettingKey = "LocalProfile.setEAOnlineSubAccount";
     private readonly GlobalRefractorV2ConfigFile _globalConfig;
     private ProfileRefractorV2ConfigFile? _profileConfig;
 
