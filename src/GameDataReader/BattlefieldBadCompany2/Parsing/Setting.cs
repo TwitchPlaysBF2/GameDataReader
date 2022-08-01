@@ -13,7 +13,7 @@ internal class Setting : Common.Parsing.Setting
         _value = value;
     }
 
-    public override string ParseValue()
+    public override string GetValue()
     {
         return _value;
     }

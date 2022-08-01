@@ -22,7 +22,7 @@ internal class LineBasedSetting : Setting
         _parsePattern = parsePattern;
     }
 
-    public override string ParseValue()
+    public override string GetValue()
     {
         var re = new Regex(_parsePattern);
         var match = re.Match(_configLine);

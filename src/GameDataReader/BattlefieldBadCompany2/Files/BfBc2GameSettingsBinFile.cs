@@ -15,7 +15,7 @@ internal class BfBc2GameSettingsBinFile : ConfigFile
     {
         var settingFinder = ReadConfigFile();
         var setting = settingFinder.GetSetting(settingKey);
-        var value = setting.ParseValue();
+        var value = setting.GetValue();
         return value;
     }
 

@@ -2,5 +2,5 @@
 
 internal abstract class Setting
 {
-    public abstract string ParseValue();
+    public abstract string GetValue();
 }
