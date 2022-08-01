@@ -1,6 +1,4 @@
-﻿using GameDataReader.BattlefieldRefractorCommon.Parsing;
-
-namespace GameDataReader.Common.Parsing;
+﻿namespace GameDataReader.Common.Parsing;
 
 /// <summary>
 /// Loops through configuration file lines until it finds the right one.
