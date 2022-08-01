@@ -1,6 +1,5 @@
 using System;
 using FluentAssertions;
-using GameDataReader.Battlefield2.Reader;
 using GameDataReader.Battlefield2142.Reader;
 using NUnit.Framework;
 

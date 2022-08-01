@@ -1,7 +1,6 @@
 using System;
 using FluentAssertions;
 using GameDataReader.Battlefield1942.Reader;
-using GameDataReader.Battlefield2.Reader;
 using NUnit.Framework;
 
 namespace GameDataReader.Tests.Battlefield1942;

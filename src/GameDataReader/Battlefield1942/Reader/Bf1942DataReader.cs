@@ -7,7 +7,8 @@ namespace GameDataReader.Battlefield1942.Reader;
 /// </summary>
 public class Bf1942DataReader : IBf1942DataReader
 {
-    private const string GameName = "Battlefield 1942", ModName = "bf1942";
+    private const string GameName = "Battlefield 1942";
+    private const string ModName = "bf1942";
     private readonly GlobalRefractorV1ConfigFile _globalConfig;
     private ProfileRefractorV1ConfigFile? _profileConfig;
 

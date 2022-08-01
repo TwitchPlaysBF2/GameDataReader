@@ -8,6 +8,13 @@ namespace GameDataReader.BattlefieldRefractorCommon.Files;
 /// <typeparam name="T">The type of the config file.</typeparam>
 public abstract class ConfigFile<T>
 {
+    protected readonly string GameName;
+
+    protected ConfigFile(string gameName)
+    {
+        GameName = gameName;
+    }
+
     protected abstract string GetFilePath();
 
     protected string GetSettingValue(string settingKey)

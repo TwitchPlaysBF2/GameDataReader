@@ -7,7 +7,8 @@ namespace GameDataReader.BattlefieldVietnam.Reader;
 /// </summary>
 public class BfVietnamDataReader : IBfVietnamDataReader
 {
-    private const string GameName = "Battlefield Vietnam", ModName = "BfVietnam";
+    private const string GameName = "Battlefield Vietnam";
+    private const string ModName = "BfVietnam";
     private readonly GlobalRefractorV1ConfigFile _globalConfig;
     private ProfileRefractorV1ConfigFile? _profileConfig;
 

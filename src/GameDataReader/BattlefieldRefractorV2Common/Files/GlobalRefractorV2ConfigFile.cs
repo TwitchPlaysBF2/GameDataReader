@@ -4,17 +4,15 @@ namespace GameDataReader.BattlefieldRefractorV2Common.Files;
 
 internal class GlobalRefractorV2ConfigFile : ConfigFile<GlobalRefractorV2ConfigFile>
 {
-    private readonly string _gameName;
-
     public GlobalRefractorV2ConfigFile(string gameName)
+        : base(gameName)
     {
-        _gameName = gameName;
     }
     
     protected override string GetFilePath()
     {
         var userDocuments = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
-        return $@"{userDocuments}\{_gameName}\Profiles\Global.con";
+        return $@"{userDocuments}\{GameName}\Profiles\Global.con";
     }
 
     /// <summary>
