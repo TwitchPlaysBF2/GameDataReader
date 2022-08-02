@@ -1,8 +1,8 @@
-﻿using GameDataReader.BattlefieldRefractorCommon.Files;
+﻿using GameDataReader.Common.Refractor.Files;
 
-namespace GameDataReader.BattlefieldRefractorV1Common.Files;
+namespace GameDataReader.Common.Refractor.V1.Files;
 
-internal class ProfileRefractorV1ConfigFile : ConfigFile<ProfileRefractorV1ConfigFile>
+internal class ProfileRefractorV1ConfigFile : RefractorConfigFile<ProfileRefractorV1ConfigFile>
 {
     private readonly string _modName;
     private readonly string _profileName;

@@ -1,8 +1,8 @@
-﻿using GameDataReader.BattlefieldRefractorCommon.Files;
+﻿using GameDataReader.Common.Refractor.Files;
 
-namespace GameDataReader.BattlefieldRefractorV2Common.Files;
+namespace GameDataReader.Common.Refractor.V2.Files;
 
-internal class GlobalRefractorV2ConfigFile : ConfigFile<GlobalRefractorV2ConfigFile>
+internal class GlobalRefractorV2ConfigFile : RefractorConfigFile<GlobalRefractorV2ConfigFile>
 {
     public GlobalRefractorV2ConfigFile(string gameName)
         : base(gameName)

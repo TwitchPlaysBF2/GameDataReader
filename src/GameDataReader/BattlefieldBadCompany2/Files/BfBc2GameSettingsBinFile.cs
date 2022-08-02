@@ -1,5 +1,6 @@
 ﻿using GameDataReader.BattlefieldBadCompany2.Parsing;
 using GameDataReader.Common.Files;
+using GameDataReader.Common.Parsing;
 
 namespace GameDataReader.BattlefieldBadCompany2.Files;
 
@@ -19,7 +20,7 @@ internal class BfBc2GameSettingsBinFile : ConfigFile
         return value;
     }
 
-    protected override Common.Parsing.SettingResolver ReadConfigFile()
+    protected override SettingResolver ReadConfigFile()
     {
         var filePath = GetFilePath();
         if (!File.Exists(filePath))
@@ -28,7 +29,7 @@ internal class BfBc2GameSettingsBinFile : ConfigFile
                 $"{GetType().FullName} not found at location: {filePath}");
 
         var content = File.ReadAllText(filePath);
-        var resolver = new SettingResolver(content);
+        var resolver = new BfBc2GameSettingsBinSettingResolver(content);
         return resolver;
     }
 

@@ -1,15 +1,16 @@
 ﻿using System.Text.RegularExpressions;
+using GameDataReader.Common.Parsing;
 
 namespace GameDataReader.BattlefieldBadCompany2.Parsing;
 
 /// <summary>
 /// Loops through configuration file settings until it finds the right one.
 /// </summary>
-internal class SettingResolver : Common.Parsing.SettingResolver
+internal class BfBc2GameSettingsBinSettingResolver : SettingResolver
 {
     private readonly string _configContent;
 
-    public SettingResolver(string configContent)
+    public BfBc2GameSettingsBinSettingResolver(string configContent)
     {
         _configContent = configContent;
     }
@@ -17,7 +18,7 @@ internal class SettingResolver : Common.Parsing.SettingResolver
     /// <summary>
     /// Looks up the desired setting in a Bad Company 2 GameSettings.bin configuration file.
     /// </summary>
-    public override Common.Parsing.Setting GetSetting(string settingKey)
+    public override Setting GetSetting(string settingKey)
     {
         /*
          * Since GameSettings.bin is a binary file, there is lots of unreadable stuff in there. But through all that,
@@ -33,7 +34,7 @@ internal class SettingResolver : Common.Parsing.SettingResolver
             if (key != settingKey)
                 continue;
 
-            return new Setting(value);
+            return new BfBc2GameSettingsBinSetting(value);
         }
 
         throw new GameDataReaderException(message:

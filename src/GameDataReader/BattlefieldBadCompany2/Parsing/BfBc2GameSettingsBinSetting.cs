@@ -1,14 +1,16 @@
-﻿namespace GameDataReader.BattlefieldBadCompany2.Parsing;
+﻿using GameDataReader.Common.Parsing;
+
+namespace GameDataReader.BattlefieldBadCompany2.Parsing;
 
 /// <summary>
 /// Represents a setting inside of a GameSettings.ini configuration file.
 /// </summary>
-internal class Setting : Common.Parsing.Setting
+internal class BfBc2GameSettingsBinSetting : Setting
 {
     private readonly string _value;
 
     /// <param name="value">i.e. mister249</param>
-    public Setting(string value)
+    public BfBc2GameSettingsBinSetting(string value)
     {
         _value = value;
     }

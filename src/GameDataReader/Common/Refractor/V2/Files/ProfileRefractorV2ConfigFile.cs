@@ -1,8 +1,8 @@
-﻿using GameDataReader.BattlefieldRefractorCommon.Files;
+﻿using GameDataReader.Common.Refractor.Files;
 
-namespace GameDataReader.BattlefieldRefractorV2Common.Files;
+namespace GameDataReader.Common.Refractor.V2.Files;
 
-internal class ProfileRefractorV2ConfigFile : ConfigFile<ProfileRefractorV2ConfigFile>
+internal class ProfileRefractorV2ConfigFile : RefractorConfigFile<ProfileRefractorV2ConfigFile>
 {
     private readonly string _profileNumber;
     private readonly string _nameSettingKey;

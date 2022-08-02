@@ -1,16 +1,16 @@
 ﻿using GameDataReader.Common.Files;
 
-namespace GameDataReader.BattlefieldRefractorCommon.Files;
+namespace GameDataReader.Common.Refractor.Files;
 
 /// <summary>
 /// Represents a Refractor engine .con configuration file.
 /// </summary>
 /// <typeparam name="T">The type of the config file.</typeparam>
-internal abstract class ConfigFile<T> : LineBasedConfigFile<T>
+internal abstract class RefractorConfigFile<T> : LineBasedConfigFile<T>
 {
     protected readonly string GameName;
 
-    protected ConfigFile(string gameName)
+    protected RefractorConfigFile(string gameName)
     {
         GameName = gameName;
     }
