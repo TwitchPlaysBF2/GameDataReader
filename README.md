@@ -1,3 +1,5 @@
+[![Continuous Deployment](https://img.shields.io/github/workflow/status/TwitchPlaysBF2/GameDataReader/Continuous%20Deployment?label=Continuous%20Deployment&logo=github&style=flat-square)](https://github.com/TwitchPlaysBF2/GameDataReader/actions/workflows/Continuous%20Deployment.yaml)
+
 # GameDataReader
 An open-source NuGet library providing simple access to game settings.
 
