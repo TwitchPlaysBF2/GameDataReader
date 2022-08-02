@@ -1,4 +1,6 @@
 [![Continuous Deployment](https://img.shields.io/github/workflow/status/TwitchPlaysBF2/GameDataReader/Continuous%20Deployment?label=Continuous%20Deployment&logo=github&style=flat-square)](https://github.com/TwitchPlaysBF2/GameDataReader/actions/workflows/Continuous%20Deployment.yaml)
+[![Discord](https://img.shields.io/discord/988930069210730506?color=%237289da&label=Discord&logo=discord&logoColor=%237289da&style=flat-square)](https://discord.bf2.tv)
+[![last commit](https://img.shields.io/github/last-commit/TwitchPlaysBF2/GameDataReader?logo=git&logoColor=9147FF&style=flat-square)](https://github.com/TwitchPlaysBF2/GameDataReader/commits)
 
 # GameDataReader
 An open-source NuGet library providing simple access to game settings.
