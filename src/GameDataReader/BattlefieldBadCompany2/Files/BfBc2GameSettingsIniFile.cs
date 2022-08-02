@@ -1,4 +1,5 @@
-﻿using GameDataReader.Common.Files;
+﻿using GameDataReader.Common;
+using GameDataReader.Common.Files;
 
 namespace GameDataReader.BattlefieldBadCompany2.Files;
 
@@ -13,7 +14,7 @@ internal class BfBc2GameSettingsIniFile : LineBasedConfigFile<BfBc2GameSettingsI
     protected override string GetParsePattern()
     {
         // Ignoring the file structure, simply match i.e. VoipEnable=1
-        return @"^(?<key>.*?)=(?<value>.*?)$";
+        return $@"^(?<{Constants.RegexKeyGroupName}>.*?)=(?<{Constants.RegexValueGroupName}>.*?)$";
     }
     
     /// <summary>

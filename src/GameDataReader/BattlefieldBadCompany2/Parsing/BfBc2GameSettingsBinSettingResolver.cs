@@ -1,4 +1,5 @@
 ﻿using System.Text.RegularExpressions;
+using GameDataReader.Common;
 using GameDataReader.Common.Parsing;
 
 namespace GameDataReader.BattlefieldBadCompany2.Parsing;
@@ -25,11 +26,11 @@ internal class BfBc2GameSettingsBinSettingResolver : SettingResolver
          * a pattern of [key]...stuff...[value] emerges. We need to ignore some key for which there no (readable) values,
          * such as FlashValues, UIMenuTrackerPage_Store, UIMenuTrackerPage_MenuUnlocks etc.
          */
-        var re = new Regex(@"(?<key>[a-zA-Z][\w]+)(?<!UIMenu\w+|FlashValues)[\x00-\x1F\x7f-\x9f\u2122\ufffd\s]+(?<value>[\x20-\x7e]+)");
+        var re = new Regex($@"(?<{Constants.RegexKeyGroupName}>[a-zA-Z][\w]+)(?<!UIMenu\w+|FlashValues)[\x00-\x1F\x7f-\x9f\u2122\ufffd\s]+(?<{Constants.RegexValueGroupName}>[\x20-\x7e]+)");
         foreach (Match match in re.Matches(_configContent))
         {
-            var key = match.Groups["key"].Value;
-            var value = match.Groups["value"].Value;
+            var key = match.Groups[Constants.RegexKeyGroupName].Value;
+            var value = match.Groups[Constants.RegexValueGroupName].Value;
             
             if (key != settingKey)
                 continue;

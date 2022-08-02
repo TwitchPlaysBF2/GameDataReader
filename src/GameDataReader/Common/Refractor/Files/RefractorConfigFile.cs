@@ -17,6 +17,6 @@ internal abstract class RefractorConfigFile<T> : LineBasedConfigFile<T>
 
     protected override string GetParsePattern()
     {
-        return "^(?<key>.*?) \"?(?<value>.*?)\"?$";
+        return $"^(?<{Constants.RegexKeyGroupName}>.*?) \"?(?<{Constants.RegexValueGroupName}>.*?)\"?$";
     }
 }

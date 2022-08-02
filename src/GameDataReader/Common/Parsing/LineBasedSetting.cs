@@ -27,10 +27,10 @@ internal class LineBasedSetting : Setting
         var re = new Regex(_parsePattern);
         var match = re.Match(_configLine);
         
-        if (!match.Success || match.Groups["key"].Value != _settingKey)
+        if (!match.Success || match.Groups[Constants.RegexKeyGroupName].Value != _settingKey)
             throw new GameDataReaderException(
                 $"The setting {_settingKey} could not be parsed correctly. Key not found in config line:\r\n{_configLine}");
 
-        return match.Groups["value"].Value.Trim();
+        return match.Groups[Constants.RegexValueGroupName].Value.Trim();
     }
 }
