@@ -6,11 +6,12 @@ namespace GameDataReader.Common.Files;
 /// Represents a line based configuration file (one key-value pair per line).
 /// </summary>
 /// <typeparam name="T">The type of the config file.</typeparam>
-internal abstract class LineBasedConfigFile<T> : ConfigFile
+internal abstract class LineBasedConfigFile<T> : IConfigFile
 {
     protected abstract string GetParsePattern();
+    public abstract string GetFilePath();
 
-    protected override string GetSettingValue(string settingKey)
+    public string GetSettingValue(string settingKey)
     {
         var settingFinder = ReadConfigFile();
         var setting = settingFinder.GetSetting(settingKey);
@@ -18,7 +19,7 @@ internal abstract class LineBasedConfigFile<T> : ConfigFile
         return value;
     }
 
-    protected override SettingResolver ReadConfigFile()
+    public ISettingResolver ReadConfigFile()
     {
         var filePath = GetFilePath();
         if (!File.Exists(filePath))

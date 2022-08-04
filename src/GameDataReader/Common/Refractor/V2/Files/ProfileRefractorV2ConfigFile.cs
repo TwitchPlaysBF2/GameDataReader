@@ -14,7 +14,7 @@ internal class ProfileRefractorV2ConfigFile : RefractorConfigFile<ProfileRefract
         _nameSettingKey = nameSettingKey;
     }
 
-    protected override string GetFilePath()
+    public override string GetFilePath()
     {
         var userDocuments = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
         return $@"{userDocuments}\{GameName}\Profiles\{_profileNumber}\Profile.con";

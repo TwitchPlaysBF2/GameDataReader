@@ -5,7 +5,7 @@ namespace GameDataReader.Common.Parsing;
 /// <summary>
 /// Represents a line inside of line based configuration file.
 /// </summary>
-internal class LineBasedSetting : Setting
+internal class LineBasedSetting : ISetting
 {
     private readonly string _configLine;
     private readonly string _settingKey;
@@ -22,7 +22,7 @@ internal class LineBasedSetting : Setting
         _parsePattern = parsePattern;
     }
 
-    public override string GetValue()
+    public string GetValue()
     {
         var re = new Regex(_parsePattern);
         var match = re.Match(_configLine);

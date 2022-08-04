@@ -7,7 +7,7 @@ namespace GameDataReader.BattlefieldBadCompany2.Parsing;
 /// <summary>
 /// Loops through configuration file settings until it finds the right one.
 /// </summary>
-internal class BfBc2GameSettingsBinSettingResolver : SettingResolver
+internal class BfBc2GameSettingsBinSettingResolver : ISettingResolver
 {
     private readonly string _configContent;
 
@@ -19,7 +19,7 @@ internal class BfBc2GameSettingsBinSettingResolver : SettingResolver
     /// <summary>
     /// Looks up the desired setting in a Bad Company 2 GameSettings.bin configuration file.
     /// </summary>
-    public override Setting GetSetting(string settingKey)
+    public ISetting GetSetting(string settingKey)
     {
         /*
          * Since GameSettings.bin is a binary file, there is lots of unreadable stuff in there. But through all that,

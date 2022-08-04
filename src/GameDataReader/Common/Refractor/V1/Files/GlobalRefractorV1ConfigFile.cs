@@ -12,7 +12,7 @@ internal class GlobalRefractorV1ConfigFile : RefractorConfigFile<GlobalRefractor
         _modName = modName;
     }
 
-    protected override string GetFilePath()
+    public override string GetFilePath()
     {
         var appData = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData);
         return $@"{appData}\VirtualStore\Program Files (x86)\EA GAMES\{GameName}\Mods\{_modName}\Settings\Profile.con";

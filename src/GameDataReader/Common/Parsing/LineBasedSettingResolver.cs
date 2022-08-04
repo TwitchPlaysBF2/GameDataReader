@@ -3,7 +3,7 @@
 /// <summary>
 /// Loops through configuration file lines until it finds the right one.
 /// </summary>
-internal class LineBasedSettingResolver : SettingResolver
+internal class LineBasedSettingResolver : ISettingResolver
 {
     private readonly IEnumerable<string> _configLines;
     private readonly string _parsePattern;
@@ -17,7 +17,7 @@ internal class LineBasedSettingResolver : SettingResolver
     /// <summary>
     /// Looks up the desired setting in a line-based configuration file.
     /// </summary>
-    public override Setting GetSetting(string settingKey)
+    public ISetting GetSetting(string settingKey)
     {
         foreach (var configLine in _configLines)
         {

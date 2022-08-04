@@ -8,8 +8,8 @@ internal class GlobalRefractorV2ConfigFile : RefractorConfigFile<GlobalRefractor
         : base(gameName)
     {
     }
-    
-    protected override string GetFilePath()
+
+    public override string GetFilePath()
     {
         var userDocuments = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
         return $@"{userDocuments}\{GameName}\Profiles\Global.con";

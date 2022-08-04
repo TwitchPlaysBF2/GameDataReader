@@ -5,7 +5,7 @@ namespace GameDataReader.BattlefieldBadCompany2.Parsing;
 /// <summary>
 /// Represents a setting inside of a GameSettings.ini configuration file.
 /// </summary>
-internal class BfBc2GameSettingsBinSetting : Setting
+internal class BfBc2GameSettingsBinSetting : ISetting
 {
     private readonly string _value;
 
@@ -15,7 +15,7 @@ internal class BfBc2GameSettingsBinSetting : Setting
         _value = value;
     }
 
-    public override string GetValue()
+    public string GetValue()
     {
         return _value;
     }

@@ -4,15 +4,15 @@ using GameDataReader.Common.Parsing;
 
 namespace GameDataReader.BattlefieldBadCompany2.Files;
 
-internal class BfBc2GameSettingsBinFile : ConfigFile
+internal class BfBc2GameSettingsBinFile : IConfigFile
 {
-    protected override string GetFilePath()
+    public string GetFilePath()
     {
         var userDocuments = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
         return $@"{userDocuments}\BFBC2\GameSettings.bin";
     }
 
-    protected override string GetSettingValue(string settingKey)
+    public string GetSettingValue(string settingKey)
     {
         var settingFinder = ReadConfigFile();
         var setting = settingFinder.GetSetting(settingKey);
@@ -20,7 +20,7 @@ internal class BfBc2GameSettingsBinFile : ConfigFile
         return value;
     }
 
-    protected override SettingResolver ReadConfigFile()
+    public ISettingResolver ReadConfigFile()
     {
         var filePath = GetFilePath();
         if (!File.Exists(filePath))

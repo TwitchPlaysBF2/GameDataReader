@@ -14,7 +14,7 @@ internal class ProfileRefractorV1ConfigFile : RefractorConfigFile<ProfileRefract
         _profileName = profileName;
     }
 
-    protected override string GetFilePath()
+    public override string GetFilePath()
     {
         var appData = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData);
         return $@"{appData}\VirtualStore\Program Files (x86)\EA GAMES\{GameName}\Mods\{_modName}\Settings\Profiles\{_profileName}\GeneralOptions.con";

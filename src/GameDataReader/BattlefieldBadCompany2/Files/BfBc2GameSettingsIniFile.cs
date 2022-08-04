@@ -5,7 +5,7 @@ namespace GameDataReader.BattlefieldBadCompany2.Files;
 
 internal class BfBc2GameSettingsIniFile : LineBasedConfigFile<BfBc2GameSettingsIniFile>
 {
-    protected override string GetFilePath()
+    public override string GetFilePath()
     {
         var userDocuments = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
         return $@"{userDocuments}\BFBC2\GameSettings.ini";
@@ -16,7 +16,7 @@ internal class BfBc2GameSettingsIniFile : LineBasedConfigFile<BfBc2GameSettingsI
         // Ignoring the file structure, simply match i.e. VoipEnable=1
         return $@"^(?<{Constants.RegexKeyGroupName}>.*?)=(?<{Constants.RegexValueGroupName}>.*?)$";
     }
-    
+
     /// <summary>
     /// Returns the players currently set clan tag (prefix).
     /// </summary>
