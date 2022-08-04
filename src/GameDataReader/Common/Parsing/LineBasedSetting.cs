@@ -24,8 +24,8 @@ internal class LineBasedSetting : ISetting
 
     public string GetValue()
     {
-        var re = new Regex(_parsePattern);
-        var match = re.Match(_configLine);
+        var regex = new Regex(_parsePattern);
+        var match = regex.Match(_configLine);
         
         if (!match.Success || match.Groups[Constants.RegexKeyGroupName].Value != _settingKey)
             throw new GameDataReaderException(
