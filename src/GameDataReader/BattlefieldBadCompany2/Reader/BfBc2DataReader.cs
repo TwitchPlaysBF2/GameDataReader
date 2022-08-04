@@ -3,7 +3,7 @@
 namespace GameDataReader.BattlefieldBadCompany2.Reader;
 
 /// <summary>
-/// Provides read access to parsed config data from the BF2 folder.
+/// Provides read access to parsed config data from the game folder.
 /// </summary>
 public class BfBc2DataReader : IBfBc2DataReader
 {
