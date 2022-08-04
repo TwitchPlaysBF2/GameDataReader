@@ -1,4 +1,4 @@
-﻿using GameDataReader.BattlefieldRefractorV2Common.Files;
+﻿using GameDataReader.Common.Refractor.V2.Files;
 
 namespace GameDataReader.Battlefield2142.Reader;
 

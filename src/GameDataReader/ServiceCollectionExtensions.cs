@@ -1,6 +1,7 @@
 ﻿using GameDataReader.Battlefield1942.Reader;
 using GameDataReader.Battlefield2.Reader;
 using GameDataReader.Battlefield2142.Reader;
+using GameDataReader.BattlefieldBadCompany2.Reader;
 using GameDataReader.BattlefieldVietnam.Reader;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -29,6 +30,12 @@ public static class ServiceCollectionExtensions
     public static IServiceCollection AddBf2142DataReader(this IServiceCollection services)
     {
         services.AddScoped<IBf2142DataReader, Bf2142DataReader>();
+        return services;
+    }
+
+    public static IServiceCollection AddBfBc2DataReader(this IServiceCollection services)
+    {
+        services.AddScoped<IBfBc2DataReader, BfBc2DataReader>();
         return services;
     }
 }

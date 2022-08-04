@@ -1,8 +1,8 @@
-﻿using GameDataReader.BattlefieldRefractorCommon.Files;
+﻿using GameDataReader.Common.Refractor.Files;
 
-namespace GameDataReader.BattlefieldRefractorV1Common.Files;
+namespace GameDataReader.Common.Refractor.V1.Files;
 
-public class ProfileRefractorV1ConfigFile : ConfigFile<ProfileRefractorV1ConfigFile>
+internal class ProfileRefractorV1ConfigFile : RefractorConfigFile<ProfileRefractorV1ConfigFile>
 {
     private readonly string _modName;
     private readonly string _profileName;
@@ -14,7 +14,7 @@ public class ProfileRefractorV1ConfigFile : ConfigFile<ProfileRefractorV1ConfigF
         _profileName = profileName;
     }
 
-    protected override string GetFilePath()
+    public override string GetFilePath()
     {
         var appData = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData);
         return $@"{appData}\VirtualStore\Program Files (x86)\EA GAMES\{GameName}\Mods\{_modName}\Settings\Profiles\{_profileName}\GeneralOptions.con";
