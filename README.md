@@ -39,3 +39,9 @@ Open to integration of more games & data.
 - `GameDataReaders.Bf2142.ReadActivePlayer()`
   - `Bf2142Player.OnlineName` - from `{userDocuments}\Battlefield 2142\Profiles\{profileNumber}\Profile.con`
   - `Bf2142Player.ClanTag` - from `{userDocuments}\Battlefield 2142\Profiles\Global.con`
+
+## Battlefield Bad Company 2
+
+- `GameDataReaders.BfBc2.ReadActivePlayer()`
+  - `BfBc2.OnlineName` - from `{userDocuments}\BFBC2\GameSettings.bin`
+  - `BfBc2.ClanTag` - from `{userDocuments}\BFBC2\GameSettings.ini`
