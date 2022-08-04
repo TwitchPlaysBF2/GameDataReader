@@ -7,13 +7,13 @@ namespace GameDataReader.BattlefieldBadCompany2.Reader;
 /// </summary>
 public class BfBc2DataReader : IBfBc2DataReader
 {
-    private readonly BfBc2GameSettingsBinFile _gameSettingsBin;
-    private readonly BfBc2GameSettingsIniFile _gameSettingsIni;
+    private readonly BfBc2BinFile _bfBc2BinFile;
+    private readonly BfBc2IniFile _bfBc2IniFile;
 
     public BfBc2DataReader()
     {
-        _gameSettingsBin = new BfBc2GameSettingsBinFile();
-        _gameSettingsIni = new BfBc2GameSettingsIniFile();
+        _bfBc2BinFile = new BfBc2BinFile();
+        _bfBc2IniFile = new BfBc2IniFile();
     }
 
     /// <summary>
@@ -24,8 +24,8 @@ public class BfBc2DataReader : IBfBc2DataReader
     /// <exception cref="GameDataReaderException">If there was a problem while reading the game data.</exception>
     public BfBc2Player ReadActivePlayer()
     {
-        var playerName = _gameSettingsBin.GetPlayerName();
-        var playerPrefix = _gameSettingsIni.GetPlayerPrefix();
+        var playerName = _bfBc2BinFile.GetPlayerName();
+        var playerPrefix = _bfBc2IniFile.GetPlayerPrefix();
 
         return new BfBc2Player(playerName, playerPrefix);
     }

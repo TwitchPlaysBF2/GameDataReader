@@ -3,7 +3,7 @@ using GameDataReader.Common.Files;
 
 namespace GameDataReader.BattlefieldBadCompany2.Files;
 
-internal class BfBc2GameSettingsIniFile : LineBasedConfigFile<BfBc2GameSettingsIniFile>
+internal class BfBc2IniFile : LineBasedConfigFile<BfBc2IniFile>
 {
     public override string GetFilePath()
     {

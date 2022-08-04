@@ -4,7 +4,7 @@ using GameDataReader.Common.Parsing;
 
 namespace GameDataReader.BattlefieldBadCompany2.Files;
 
-internal class BfBc2GameSettingsBinFile : IConfigFile
+internal class BfBc2BinFile : IConfigFile
 {
     public string GetFilePath()
     {
@@ -29,7 +29,7 @@ internal class BfBc2GameSettingsBinFile : IConfigFile
                 $"{GetType().FullName} not found at location: {filePath}");
 
         var content = File.ReadAllText(filePath);
-        var resolver = new BfBc2GameSettingsBinSettingResolver(content);
+        var resolver = new BinSettingResolver(content);
         return resolver;
     }
 

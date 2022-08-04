@@ -4,14 +4,11 @@ using GameDataReader.Common.Parsing;
 
 namespace GameDataReader.BattlefieldBadCompany2.Parsing;
 
-/// <summary>
-/// Loops through configuration file settings until it finds the right one.
-/// </summary>
-internal class BfBc2GameSettingsBinSettingResolver : ISettingResolver
+internal class BinSettingResolver : ISettingResolver
 {
     private readonly string _configContent;
 
-    public BfBc2GameSettingsBinSettingResolver(string configContent)
+    public BinSettingResolver(string configContent)
     {
         _configContent = configContent;
     }
@@ -35,7 +32,7 @@ internal class BfBc2GameSettingsBinSettingResolver : ISettingResolver
             if (key != settingKey)
                 continue;
 
-            return new BfBc2GameSettingsBinSetting(value);
+            return new BinSetting(value);
         }
 
         throw new GameDataReaderException(message:
