@@ -5,7 +5,7 @@
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
         <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-        <PackageVersion>0.0.2</PackageVersion>
+        <PackageVersion>0.0.3</PackageVersion>
         <Title>GameDataReader</Title>
         <Authors>TwitchPlaysBF2</Authors>
         <Description>NuGet library providing simple access to game settings. Reading data from games like Battlefield 2 - i.e. to access player data from BF2 specific .con configuration files. Open to extension.</Description>
