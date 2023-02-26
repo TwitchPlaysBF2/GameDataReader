@@ -1,6 +1,8 @@
 using System;
+using System.IO;
 using FluentAssertions;
 using GameDataReader.BattlefieldVietnam.Reader;
+using GameDataReader.Common.Refractor.V1.Files;
 using NUnit.Framework;
 
 namespace GameDataReader.Tests.BattlefieldVietnam;
@@ -36,5 +38,36 @@ public class GameDataReadersTests
 
         bfVietnamDataReader1.GetHashCode().Should()
             .NotBe(bfVietnamDataReader2.GetHashCode());
+    }
+
+    [Test]
+    public void GameDataReaders_BfVietnam_IsTrueProfileFileExists()
+    {
+        var GameName = "Battlefield Vietnam";
+        var ModName = "BfVietnam";
+
+        var globalRefractorV1ConfigFile = new GlobalRefractorV1ConfigFile(GameName, ModName);
+        var filePath = globalRefractorV1ConfigFile.GetFilePath();
+
+        Console.WriteLine($"File Path: {filePath}");
+
+        Assert.IsTrue(File.Exists(filePath));
+    }
+
+    [Test]
+    public void GameDataReaders_BfVietnam_IsTrueGeneralOptionsFileExists()
+    {
+        var GameName = "Battlefield Vietnam";
+        var ModName = "BfVietnam";
+
+        var globalRefractorV1ConfigFile = new GlobalRefractorV1ConfigFile(GameName, ModName);
+        var activeProfileName = globalRefractorV1ConfigFile.GetCurrentlyActiveProfileName();
+
+        var profileRefractorV1ConfigFile = new ProfileRefractorV1ConfigFile(GameName, ModName, activeProfileName);
+        var filePath = profileRefractorV1ConfigFile.GetFilePath();
+
+        Console.WriteLine($"File Path: {filePath}");
+
+        Assert.IsTrue(File.Exists(filePath));
     }
 }

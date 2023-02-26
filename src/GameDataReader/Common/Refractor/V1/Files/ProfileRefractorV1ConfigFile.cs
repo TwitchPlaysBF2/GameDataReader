@@ -6,18 +6,25 @@ internal class ProfileRefractorV1ConfigFile : RefractorConfigFile<ProfileRefract
 {
     private readonly string _modName;
     private readonly string _profileName;
+    private readonly string _gameProcessPath;
 
     public ProfileRefractorV1ConfigFile(string gameName, string modName, string profileName)
         : base(gameName)
     {
+        var utilityMethodsRefractorV1 = new UtilityMethodsRefractorV1ConfigFile();
         _modName = modName;
         _profileName = profileName;
+        _gameProcessPath = utilityMethodsRefractorV1.GetProcessPath(_modName);
     }
 
     public override string GetFilePath()
     {
+        var generalOptionsFile = $@"\Mods\{ _modName}\Settings\Profiles\{ _profileName}\GeneralOptions.con";
         var appData = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData);
-        return $@"{appData}\VirtualStore\Program Files (x86)\EA GAMES\{GameName}\Mods\{_modName}\Settings\Profiles\{_profileName}\GeneralOptions.con";
+        var filePath = !string.IsNullOrWhiteSpace(_gameProcessPath) ?
+            $@"{_gameProcessPath}{generalOptionsFile}" :
+            $@"{appData}\VirtualStore\Program Files (x86)\EA GAMES\{GameName}{generalOptionsFile}";
+        return filePath;
     }
 
     public string GetPlayerName()
