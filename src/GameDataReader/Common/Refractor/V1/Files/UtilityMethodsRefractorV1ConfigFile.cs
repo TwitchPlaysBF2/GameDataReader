@@ -11,6 +11,14 @@ internal class UtilityMethodsRefractorV1ConfigFile
         var matchingProcesses = Process.GetProcessesByName(modName);
         return matchingProcesses.Length == 1 ? matchingProcesses[0].GetMainModuleFileName(modName) : string.Empty;
     }
+
+    public string GetConFilePath(string conFile, string gameProcessPath, string gameName)
+    {
+        var appData = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData);
+        var executingPath = File.Exists($@"{gameProcessPath}{conFile}") ? $@"{gameProcessPath}{conFile}" : string.Empty;
+        var fallbackPath = File.Exists($@"{appData}\VirtualStore\Program Files (x86)\EA GAMES\{gameName}{conFile}") ? $@"{appData}\VirtualStore\Program Files (x86)\EA GAMES\{gameName}{conFile}" : string.Empty;
+        return File.Exists($@"{gameProcessPath}{conFile}") ? executingPath : fallbackPath;
+    }
 }
 
 internal static class Extensions

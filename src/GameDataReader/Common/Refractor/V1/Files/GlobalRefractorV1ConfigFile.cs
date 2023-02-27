@@ -6,6 +6,7 @@ internal class GlobalRefractorV1ConfigFile : RefractorConfigFile<GlobalRefractor
 {
     private readonly string _modName;
     private readonly string _gameProcessPath;
+    private readonly string _conFilePath;
 
     public GlobalRefractorV1ConfigFile(string gameName, string modName)
         : base(gameName)
@@ -13,16 +14,13 @@ internal class GlobalRefractorV1ConfigFile : RefractorConfigFile<GlobalRefractor
         var utilityMethodsRefractorV1 = new UtilityMethodsRefractorV1ConfigFile();
         _modName = modName;
         _gameProcessPath = utilityMethodsRefractorV1.GetProcessPath(_modName);
+        var conFile = $@"\Mods\{_modName}\Settings\Profile.con";
+        _conFilePath = utilityMethodsRefractorV1.GetConFilePath(conFile, _gameProcessPath, GameName);
     }
 
     public override string GetFilePath()
     {
-        var profileFile = $@"\Mods\{_modName}\Settings\Profile.con";
-        var appData = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData);
-        var filePath = !string.IsNullOrWhiteSpace(_gameProcessPath) ?
-            $@"{_gameProcessPath}{profileFile}" :
-            $@"{appData}\VirtualStore\Program Files (x86)\EA GAMES\{GameName}{profileFile}";
-        return filePath;
+        return _conFilePath;
     }
 
     public string GetCurrentlyActiveProfileName()
