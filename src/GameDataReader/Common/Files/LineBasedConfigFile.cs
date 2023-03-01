@@ -1,4 +1,5 @@
 ﻿using GameDataReader.Common.Parsing;
+using System.Text;
 
 namespace GameDataReader.Common.Files;
 
@@ -27,7 +28,18 @@ internal abstract class LineBasedConfigFile<T> : IConfigFile
                 "Couldn't find configuration data. Is the game installed?\r\n" +
                 $"{typeof(T).FullName} not found at location: {filePath}");
 
-        var configLines = File.ReadAllLines(filePath);
+        //BF1942 and BFVietnam CON files use ANSI/windows-1252 character encoding
+        var configLines = new List<string>();
+        if (filePath.ToLower().Contains("bf1942") || filePath.ToLower().Contains("bfvietnam"))
+        {
+            Encoding.RegisterProvider(CodePagesEncodingProvider.Instance);
+            configLines = File.ReadAllLines(filePath, Encoding.GetEncoding("windows-1252")).ToList();
+        }
+        else
+        {
+            configLines = File.ReadAllLines(filePath).ToList();
+        }
+
         var resolver = new LineBasedSettingResolver(configLines, GetParsePattern());
         return resolver;
     }
