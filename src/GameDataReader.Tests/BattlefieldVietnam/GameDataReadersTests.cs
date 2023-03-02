@@ -40,6 +40,7 @@ public class GameDataReadersTests
             .NotBe(bfVietnamDataReader2.GetHashCode());
     }
 
+    [Explicit("Only run this test on a real Windows machine, for end-to-end testing.")]
     [Test]
     public void GameDataReaders_BfVietnam_IsTrueProfileFileExists()
     {
@@ -54,6 +55,7 @@ public class GameDataReadersTests
         Assert.IsTrue(File.Exists(filePath));
     }
 
+    [Explicit("Only run this test on a real Windows machine, for end-to-end testing.")]
     [Test]
     public void GameDataReaders_BfVietnam_IsTrueGeneralOptionsFileExists()
     {

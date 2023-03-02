@@ -4,15 +4,15 @@ using System.Text;
 
 namespace GameDataReader.Common.Refractor.V1.Files;
 
-internal class UtilityMethodsRefractorV1ConfigFile
+internal static class RefractorV1PathResolver
 {
-    public string GetProcessPath(string modName)
+    public static string GetProcessPath(string modName)
     {
         var matchingProcesses = Process.GetProcessesByName(modName);
         return matchingProcesses.Length == 1 ? matchingProcesses[0].GetMainModuleFileName(modName) : string.Empty;
     }
 
-    public string GetConFilePath(string conFile, string gameProcessPath, string gameName)
+    public static string GetConFilePath(string conFile, string gameProcessPath, string gameName)
     {
         var appData = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData);
         var executingPath = File.Exists($@"{gameProcessPath}{conFile}") ? $@"{gameProcessPath}{conFile}" : string.Empty;
