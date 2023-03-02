@@ -16,9 +16,8 @@ internal class ProfileRefractorV1ConfigFile : RefractorConfigFile<ProfileRefract
 
     public override string GetFilePath()
     {
-        var gameProcessPath = RefractorV1PathResolver.GetProcessPath(_modName);
         var conFile = $@"\Mods\{_modName}\Settings\Profiles\{_profileName}\GeneralOptions.con";
-        conFile = RefractorV1PathResolver.GetConFilePath(conFile, gameProcessPath, GameName);
+        conFile = RefractorV1PathResolver.GetConFilePath(conFile, _modName, GameName);
         return conFile;
     }
 
