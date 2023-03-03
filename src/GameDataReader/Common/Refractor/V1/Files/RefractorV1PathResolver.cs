@@ -8,7 +8,7 @@ public static class RefractorV1PathResolver
     public static string GetConFilePath(string conFile, string modName, string gameName)
     {
         // Use the path from the Registry, if the con file exists within the game installation path
-        var conFilePath = GetPathFromRegistry(gameName);
+        var conFilePath = GetPathFromRegistry(conFile, gameName);
         if (File.Exists(conFilePath))
         {
             return conFilePath;
@@ -31,24 +31,27 @@ public static class RefractorV1PathResolver
         return string.Empty;
     }
 
-    public static string GetPathFromRegistry(string gameName)
+    public static string GetPathFromRegistry(string conFile, string gameName)
     {
         var conFilePath = string.Empty;
 
         try
         {
-            // If the Operating System is 64bit, then the game's install path needs to be read from Wow6432Node 
-            var registryView = Environment.Is64BitOperatingSystem ? RegistryView.Registry32 : RegistryView.Default;
-            var baseKey = RegistryKey.OpenBaseKey(RegistryHive.LocalMachine, registryView);
+            // Since BF1942 and BFV are 32bit games, the game's install path needs to be read from Wow6432Node
+            var baseKey = RegistryKey.OpenBaseKey(RegistryHive.LocalMachine, RegistryView.Registry32);
             var registryPath = $@"SOFTWARE\EA GAMES\{gameName}";
 
             baseKey.OpenSubKey(registryPath);
             if (baseKey.SubKeyCount > 0)
             {
                 var value = baseKey.GetValue("GAMEDIR");
-                if (value != null)
+                if (value != null && !string.IsNullOrWhiteSpace(value.ToString()))
                 {
-                    conFilePath = value.ToString();
+                    conFilePath = Path.Combine(value.ToString(), conFile);
+                    if (File.Exists(conFilePath))
+                    {
+                        return conFilePath;
+                    }
                 }
             }
 
@@ -65,40 +68,34 @@ public static class RefractorV1PathResolver
         var conFilePath = string.Empty;
 
         var foundProcess = Process.GetProcessesByName(processName).FirstOrDefault();
-        var processPath = foundProcess?.MainModule?.FileName;
-
-        if (!string.IsNullOrWhiteSpace(processPath))
+        if (foundProcess?.MainModule != null)
         {
-            conFilePath = Path.Combine(processPath, conFile);
-            if (File.Exists(conFilePath))
-            {
-               return conFilePath;
-            }
+            conFilePath = foundProcess.MainModule.FileName;
         }
+
+        conFilePath = Path.Combine(conFilePath, conFile);
+        if (File.Exists(conFilePath))
+        {
+            return conFilePath;
+        }
+
+        conFilePath = string.Empty;
 
         return conFilePath;
     }
 
     public static string GetPathFromAppData(string conFile, string gameName)
     {
-        var conFilePath = string.Empty;
-
         var appDataPath = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData);
-        if (!string.IsNullOrWhiteSpace(appDataPath))
-        {
-            // Use the 32bit Operating System AppData path by default and override the AppData path if is the Operating System is 64bit
-            conFilePath = Path.Combine(appDataPath, "\\VirtualStore\\Program Files\\EA GAMES\\");
-            if (Environment.Is64BitOperatingSystem)
-            {
-                conFilePath = Path.Combine(appDataPath, "\\VirtualStore\\Program Files (x86)\\EA GAMES\\");
-            }
 
-            conFilePath = Path.Combine(conFilePath, gameName, conFile);
-            if (File.Exists(conFilePath))
-            {
-                return conFilePath;
-            }
+        // Since BF1942 and BFV are 32bit games, the game's AppData path needs to be read from Program Files (x86)
+        var conFilePath = Path.Combine(appDataPath, "\\VirtualStore\\Program Files (x86)\\EA GAMES\\", gameName, conFile);
+        if (File.Exists(conFilePath))
+        {
+            return conFilePath;
         }
+
+        conFilePath = string.Empty;
 
         return conFilePath;
     }
