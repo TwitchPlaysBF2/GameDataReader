@@ -39,22 +39,21 @@ public static class RefractorV1PathResolver
         {
             // Since BF1942 and BFV are 32bit games, the game's install path needs to be read from Wow6432Node
             var baseKey = RegistryKey.OpenBaseKey(RegistryHive.LocalMachine, RegistryView.Registry32);
-            var registryPath = $@"SOFTWARE\EA GAMES\{gameName}";
+            var registryPath = $@"SOFTWARE\Wow6432Node\EA GAMES\{gameName}";
 
-            baseKey.OpenSubKey(registryPath);
-            if (baseKey.SubKeyCount > 0)
+            baseKey = baseKey.OpenSubKey(registryPath);
+
+            var value = baseKey?.GetValue("GAMEDIR");
+            if (value != null && !string.IsNullOrWhiteSpace(value.ToString()))
             {
-                var value = baseKey.GetValue("GAMEDIR");
-                if (value != null && !string.IsNullOrWhiteSpace(value.ToString()))
+                conFilePath = $@"{value}{conFile}";
+                if (File.Exists(conFilePath))
                 {
-                    conFilePath = Path.Combine(value.ToString(), conFile);
-                    if (File.Exists(conFilePath))
-                    {
-                        return conFilePath;
-                    }
+                    return conFilePath;
                 }
             }
 
+            conFilePath = string.Empty;
             return conFilePath;
         }
         catch (Exception)
@@ -70,17 +69,16 @@ public static class RefractorV1PathResolver
         var foundProcess = Process.GetProcessesByName(processName).FirstOrDefault();
         if (foundProcess?.MainModule != null)
         {
-            conFilePath = foundProcess.MainModule.FileName;
+            conFilePath = Path.GetDirectoryName(foundProcess.MainModule.FileName);
         }
 
-        conFilePath = Path.Combine(conFilePath, conFile);
+        conFilePath = $@"{conFilePath}{conFile}";
         if (File.Exists(conFilePath))
         {
             return conFilePath;
         }
 
         conFilePath = string.Empty;
-
         return conFilePath;
     }
 
@@ -89,14 +87,13 @@ public static class RefractorV1PathResolver
         var appDataPath = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData);
 
         // Since BF1942 and BFV are 32bit games, the game's AppData path needs to be read from Program Files (x86)
-        var conFilePath = Path.Combine(appDataPath, "\\VirtualStore\\Program Files (x86)\\EA GAMES\\", gameName, conFile);
+        var conFilePath = $@"{appDataPath}\VirtualStore\Program Files (x86)\EA GAMES\{gameName}{conFile}";
         if (File.Exists(conFilePath))
         {
             return conFilePath;
         }
 
         conFilePath = string.Empty;
-
         return conFilePath;
     }
 }

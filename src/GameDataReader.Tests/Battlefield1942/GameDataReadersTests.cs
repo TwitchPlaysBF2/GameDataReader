@@ -1,6 +1,5 @@
 using System;
 using System.IO;
-using System.Numerics;
 using FluentAssertions;
 using GameDataReader.Battlefield1942.Reader;
 using GameDataReader.Common.Refractor.V1.Files;
@@ -14,11 +13,11 @@ public class GameDataReadersTests
 
     [Explicit("Only run this test on a real Windows machine, for end-to-end testing.")]
     [Test]
-    public void ReadActivePlayer_DoesNotThrowLocally()
+    public void GameDataReaders_Bf1942_ReadActivePlayer_DoesNotThrowLocally()
     {
         var player = Bf1942DataReader.ReadActivePlayer();
 
-        Console.WriteLine($"Player Name: {player.OnlineName}");
+        Console.WriteLine($"[Bf1942_ReadActivePlayer_DoesNotThrowLocally] Player Name: {player.OnlineName}");
     }
 
     [Test]
@@ -51,7 +50,7 @@ public class GameDataReadersTests
         var globalRefractorV1ConfigFile = new GlobalRefractorV1ConfigFile(GameName, ModName);
         var filePath = globalRefractorV1ConfigFile.GetFilePath();
 
-        Console.WriteLine($"File Path: {filePath}");
+        Console.WriteLine($"[Bf1942_IsTrueProfileFileExists] File Path: {filePath}");
 
         Assert.IsTrue(File.Exists(filePath));
     }
@@ -69,7 +68,7 @@ public class GameDataReadersTests
         var profileRefractorV1ConfigFile = new ProfileRefractorV1ConfigFile(GameName, ModName, activeProfileName);
         var filePath = profileRefractorV1ConfigFile.GetFilePath();
 
-        Console.WriteLine($"File Path: {filePath}");
+        Console.WriteLine($"[Bf1942_IsTrueGeneralOptionsFileExists] File Path: {filePath}");
 
         Assert.IsTrue(File.Exists(filePath));
     }

@@ -13,11 +13,11 @@ public class GameDataReadersTests
 
     [Explicit("Only run this test on a real Windows machine, for end-to-end testing.")]
     [Test]
-    public void ReadActivePlayer_DoesNotThrowLocally()
+    public void GameDataReaders_BfVietnam_ReadActivePlayer_DoesNotThrowLocally()
     {
         var player = BfVietnamDataReader.ReadActivePlayer();
 
-        Console.WriteLine($"Player Name: {player.OnlineName}");
+        Console.WriteLine($"[BfVietnam_ReadActivePlayer_DoesNotThrowLocally] Player Name: {player.OnlineName}");
     }
 
     [Test]
@@ -50,7 +50,7 @@ public class GameDataReadersTests
         var globalRefractorV1ConfigFile = new GlobalRefractorV1ConfigFile(GameName, ModName);
         var filePath = globalRefractorV1ConfigFile.GetFilePath();
 
-        Console.WriteLine($"File Path: {filePath}");
+        Console.WriteLine($"[BfVietnam_IsTrueProfileFileExists] File Path: {filePath}");
 
         Assert.IsTrue(File.Exists(filePath));
     }
@@ -68,7 +68,7 @@ public class GameDataReadersTests
         var profileRefractorV1ConfigFile = new ProfileRefractorV1ConfigFile(GameName, ModName, activeProfileName);
         var filePath = profileRefractorV1ConfigFile.GetFilePath();
 
-        Console.WriteLine($"File Path: {filePath}");
+        Console.WriteLine($"[BfVietnam_IsTrueGeneralOptionsFileExists] File Path: {filePath}");
 
         Assert.IsTrue(File.Exists(filePath));
     }
