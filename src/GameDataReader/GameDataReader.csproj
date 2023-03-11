@@ -5,7 +5,7 @@
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
         <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-        <PackageVersion>0.0.3</PackageVersion>
+        <PackageVersion>0.0.4</PackageVersion>
         <Title>GameDataReader</Title>
         <Authors>TwitchPlaysBF2</Authors>
         <Description>NuGet library providing simple access to game settings. Reading data from games like Battlefield 2 - i.e. to access player data from BF2 specific .con configuration files. Open to extension.</Description>
@@ -18,6 +18,8 @@
 
     <ItemGroup>
         <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="6.0.0" />
+        <PackageReference Include="Microsoft.Win32.Registry" Version="5.0.0" />
+        <PackageReference Include="System.Text.Encoding.CodePages" Version="7.0.0" />
     </ItemGroup>
 
     <ItemGroup>
