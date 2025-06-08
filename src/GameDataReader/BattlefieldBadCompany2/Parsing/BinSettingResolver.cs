@@ -23,7 +23,7 @@ internal class BinSettingResolver : ISettingResolver
          * a pattern of [key]...stuff...[value] emerges. We need to ignore some keys for which there are no (readable) values,
          * such as FlashValues, UIMenuTrackerPage_Store, UIMenuTrackerPage_MenuUnlocks etc.
          */
-        var regex = new Regex($@"(?<{Constants.RegexKeyGroupName}>[a-zA-Z][\w]+)(?<!UIMenu\w+|FlashValues)[\x00-\x1F\x7f-\x9f\u2122\ufffd\s]+(?<{Constants.RegexValueGroupName}>[\x20-\x7e]+)");
+        var regex = new Regex($@"(?<{Constants.RegexKeyGroupName}>[a-zA-Z][\w]+)(?<!UIMenu\w+|FlashValues)[\x00-\x1F\x7f-\x9f\u2122\ufffd\s%]+(?<{Constants.RegexValueGroupName}>[\x20-\x7e]+)");
         foreach (Match match in regex.Matches(_configContent))
         {
             var key = match.Groups[Constants.RegexKeyGroupName].Value;
